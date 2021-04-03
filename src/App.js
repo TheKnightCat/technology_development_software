@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
@@ -11,6 +11,7 @@ import "primeicons/primeicons.css";
 import "./App.css";
 
 function App() {
+  const [word, setWord] = useState("");
   const toast = useRef(null);
   let flag = false;
 
@@ -38,7 +39,11 @@ function App() {
 
           <div className="p-fluid">
             <div className="p-inputgroup">
-              <InputText keyfilter={/[^\s]/} />
+              <InputText
+                value={word}
+                keyfilter={/[^\s]/}
+                onChange={(e) => setWord(e.target.value)}
+              />
               <Button icon="pi pi-check" onClick={showToast} />
             </div>
 
