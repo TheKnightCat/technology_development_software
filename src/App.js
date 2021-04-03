@@ -8,6 +8,7 @@ import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
+import photo from "./photo.jpg";
 import "./App.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <img src={photo} style={{ width: "500px", height: "400px" }} />
         <div>
           <label>Введите цепочку символов </label>
 
