@@ -34,9 +34,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          <InputText />
-          <Button label="Check" onClick={showToast} />
-          <Toast ref={toast} />
+          <label>Введите цепочку символов </label>
+
+          <div className="p-fluid">
+            <div className="p-inputgroup">
+              <InputText />
+              <Button icon="pi pi-check" onClick={showToast} />
+            </div>
+
+            <Toast ref={toast} />
+          </div>
         </div>
       </header>
     </div>
