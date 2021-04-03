@@ -38,7 +38,7 @@ function App() {
 
           <div className="p-fluid">
             <div className="p-inputgroup">
-              <InputText />
+              <InputText keyfilter={/[^\s]/} />
               <Button icon="pi pi-check" onClick={showToast} />
             </div>
 
