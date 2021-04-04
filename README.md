@@ -1,4 +1,4 @@
-# TechnologyDevelopmentSoftware
+# Technology Development Software
 Дисциплина 'Технология разработки ПО'
 
 ТЕМА: РАЗРАБОТКА ЛЕКСИЧЕСКОГО АНАЛИЗАТОРА

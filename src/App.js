@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
@@ -13,7 +14,7 @@ import "./App.css";
 
 function App() {
   const [word, setWord] = useState("");
-  const [disableButtons, setDisableButtons] = useState(true);
+  const [disabledButtons, setDisableButtons] = useState(true);
   const toast = useRef(null);
 
   /**
@@ -120,35 +121,25 @@ function App() {
    * Функция для отображения уведомления о вводе верной последовательности символов
    */
   function showSuccess() {
-    toast.current.show({
-      severity: "success",
-      summary: "Верно",
-      life: 10000,
-    });
+    toast.current.show({ severity: "success", summary: "Верно", life: 5000 });
   }
 
   /**
    * Функция для отображения уведомления о вводе неверной последовательности символов
    */
   function showError() {
-    toast.current.show({
-      severity: "error",
-      summary: "Неверно",
-      life: 10000,
-    });
+    toast.current.show({ severity: "error", summary: "Неверно", life: 5000 });
   }
 
+  /**
+   * Символ '*' - это признак конца цепочки. Его ввод в конце последовательности обязателен обязателен.
+   */
   return (
     <div className="App">
-      <header className="App-header">
-        <img
-          src={photo}
-          style={{ width: "500px", height: "400px" }}
-          alt="Схема задания"
-        />
-        <br />
+      <Card title="Лексический анализатор" className="App-card">
+        <img src={photo} alt="Схема задания" />
         <div>
-          <label>Введите цепочку символов a,b,c, * </label>
+          <label>Введите цепочку символов a,b,c, *</label>
 
           <div className="p-fluid">
             <div className="p-inputgroup">
@@ -157,26 +148,25 @@ function App() {
                 keyfilter={/[^\s]/}
                 onChange={(e) => setWord(e.target.value)}
                 onKeyPress={(e) => {
-                  e.code === "Enter" && !disableButtons && check();
+                  e.code === "Enter" && !disabledButtons && check();
                 }}
               />
               <Button
                 icon="pi pi-check"
                 onClick={check}
-                disabled={disableButtons}
+                disabled={disabledButtons}
               />
               <Button
                 className="p-button-danger"
                 icon="pi pi-trash"
                 onClick={() => setWord("")}
-                disabled={disableButtons}
+                disabled={disabledButtons}
               />
             </div>
-
-            <Toast ref={toast} />
           </div>
         </div>
-      </header>
+      </Card>
+      <Toast ref={toast} />
     </div>
   );
 }
